@@ -1,4 +1,4 @@
-# SelectPlantMiRNAs
+# Select Plan tMiRNAs
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
