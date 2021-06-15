@@ -1,11 +1,12 @@
  ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/logo_menor81.png?raw=true)
- # Select Plant MiRNAs
+# Select Plant MiRNAs
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
 miRBase of pre-miRNAs (hairpin), to search for miRNAs by homology in genomes, the tool's output 
 provides both the identified miRNAs (output fasta and tabular), as the identified non-redundant miRNAs
 
+#Unzip the directory with the tool: SelectPlantMiRNAs.rar
 
 #INSTALL DEPENDENCES Ubuntu
 
@@ -25,10 +26,17 @@ $ press "enter" when "Extract regions from a sequence alignment"
 
 #OUTPUT
 
-#Identified miRNAs will be in the "miRNAsIdentified" folder, separated by miRNA family files
+#"miRNAsIdentified" folder: Identified miRNAs will be in the, separated by miRNA family files
 
-#Identified miRNAs output Tabular will be in the "miRNAsIdentified_Tabular" folder, separated by miRNA family files
+#"miRNAsIdentified_Tabular" folder: Identified miRNAs output Tabular, separated by miRNA family files
 
-#Select miRNAs Non Redundant threshold 80% "miRNAsIdentify_NonRedundant", separated by miRNA family files
+#"miRNAsIdentify_NonRedundant" folder: Select miRNAs Non Redundant threshold 80%, separated by miRNA family files
 
-#Select miRNAs Redundant "miRNAsIdentify_Redundant", separated by miRNA family files
+#"miRNAsIdentify_Redundant" folder: Select miRNAs Redundant, separated by miRNA family files
+
+#"MSA" folder: multiple sequence alignment of identified miRNAs
+
+#"MSA_FASTA" folder: multiple sequence alignment of identified miRNAs, in fast format
+
+>To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
+
