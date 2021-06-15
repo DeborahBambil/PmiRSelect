@@ -1,5 +1,5 @@
  ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/logo_menor81.png?raw=true)
- # Select Plan tMiRNAs
+ # Select Plant MiRNAs
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
