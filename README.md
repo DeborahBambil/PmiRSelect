@@ -1,6 +1,6 @@
- ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/logo_menor81.png?raw=true)
+ ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/logo_selection-removebg-preview.png?raw=true)
 
-# Select Plant MiRNAs
+# Selection Plant MiRNAs
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
