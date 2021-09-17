@@ -1,6 +1,6 @@
  ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/logoa_selection-removebg-preview.png?raw=true)
 
-# Selection Plant MiRNAs
+# Select PmiR (Selection Plant MiRNAs)
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
