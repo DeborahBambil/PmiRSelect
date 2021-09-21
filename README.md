@@ -1,4 +1,4 @@
- ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/logoa_selection-removebg-preview.png?raw=true)
+ ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/Imagem2.png?raw=true)
 
 # Select PmiR (Selection Plant MiRNAs)
 Author: Deborah Bambil
