@@ -1,4 +1,4 @@
- ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/Imagem2.png?raw=true)
+ ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/figure.png?raw=true)
 
 # PmiR Select (Plant MiRNAs Selection)
 Author: Deborah Bambil
