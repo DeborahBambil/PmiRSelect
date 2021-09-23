@@ -1,6 +1,6 @@
  ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/Imagem2.png?raw=true)
 
-# Select PmiR (Selection Plant MiRNAs)
+# PmiR Select (Plant MiRNAs Selection)
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
