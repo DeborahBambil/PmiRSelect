@@ -40,4 +40,4 @@ $ press "enter" when "Extract regions from a sequence alignment"
 #"MSA_FASTA" folder: multiple sequence alignment of identified miRNAs, in fast format
 
 >To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
-
+>Reference tool implemented Infernal: Nawrocki, E. P. (2014). Annotating functional RNAs in genomes using Infernal. In RNA sequence, structure, and function: computational and bioinformatic methods (pp. 163-197). Humana Press, Totowa, NJ.
