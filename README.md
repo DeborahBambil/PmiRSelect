@@ -15,17 +15,17 @@ Start search miRNAs:
 
 #Unzip the directory with the tool: SelectPlantMiRNAs.rar
 
-# INSTALL DEPENDENCES Ubuntu
+# Install Dependences Ubuntu
 
 $ bash install.sh
 
 If your operating system is different from Ubuntu, install the infernal tool, depending on your operating system
 
-# DOWNLOAD GENOME 
+# Download Genome
 
 #Insert in "SelectionPlantMiRNAs" directory named its genome: "genome"
 
-# Search MIRNAS
+# Search miRNAs
 
 $ bash run.sh
 
