@@ -11,6 +11,8 @@ Here, the 80% threshold database is also available. Corresponding to version 22.
 
 > DatabaseThreshold80Percent.fa
 
+> Tool and Database updates will be made as per miRBase updates
+
 Start search miRNAs:
 
 #Unzip the directory with the tool: SelectPlantMiRNAs.rar
