@@ -9,7 +9,7 @@ provides both the identified miRNAs (output fasta and tabular), as the identifie
 
 Here, the 80% threshold database is also available. Corresponding to version 22.1 from miRBase.
 
-$DatabaseThreshold80Percent.fa
+#DatabaseThreshold80Percent.fa
 
 #Unzip the directory with the tool: SelectPlantMiRNAs.rar
 
