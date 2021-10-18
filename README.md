@@ -7,6 +7,10 @@ This tool was built from a non-redundant dataset (threshold 80% similarity) of m
 miRBase of pre-miRNAs (hairpin), to search for miRNAs by homology in genomes, the tool's output 
 provides both the identified miRNAs (output fasta and tabular), as the identified non-redundant miRNAs.
 
+Here, the 80% threshold database is also available. Corresponding to version 22.1 from miRBase.
+
+//DatabaseThreshold80Percent.fa
+
 #Unzip the directory with the tool: SelectPlantMiRNAs.rar
 
 #INSTALL DEPENDENCES Ubuntu
