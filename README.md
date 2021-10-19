@@ -9,9 +9,9 @@ provides both the identified miRNAs (output fasta and tabular), as the identifie
 
 Here, the 80% threshold database in fasta is also available. Corresponding to version 22.1 from miRBase.
 
-> DatabaseThreshold80Percent.fa
+> DatasetThreshold80Percent.fa
 
-> Tool and Database updates will be made as per miRBase updates
+> Tool and Dataset updates will be made as by database file harpin miRBase updates
 
 Start search miRNAs:
 
