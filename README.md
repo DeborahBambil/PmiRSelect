@@ -4,7 +4,7 @@
 Author: Deborah Bambil
 
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
-miRBase of pre-miRNAs (hairpin), to search for miRNAs by homology in organism as genomes, cDNA, mRNA etc in fasta format, the tool's output 
+miRBase of pre-miRNAs (hairpin), to search for miRNAs by homology in organism genomes and transcripts as DNA, cDNA, mRNA etc in fasta format, the tool's output 
 provides both the identified miRNAs (output fasta and tabular), as the identified non-redundant miRNAs.
 
 Here, the 80% threshold database in fasta is also available. Corresponding to version 22.1 from miRBase.
