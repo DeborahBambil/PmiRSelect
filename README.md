@@ -6,7 +6,7 @@ Author: Deborah Bambil
 This tool was built from a non-redundant dataset (threshold 80% similarity) of miRNAs collected in the 
 miRBase of pre-miRNAs (hairpin V.22.1), to search for miRNAs by homology in organism genomes and transcripts as DNA, cDNA, mRNA in Fasta format. 
 
-//Unzip the directory with the tool: PmiRSelect.rar
+# Unzip the directory with the tool: PmiRSelect.rar
 
 # Install Dependences Ubuntu
 
@@ -24,7 +24,7 @@ $ bash run.sh
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
-#OUTPUT
+# OUTPUT
 
 The tool's output provides both the miRNAs prediction:
 
