@@ -24,14 +24,18 @@ $ bash run.sh
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
-# OUTPUT
+#OUTPUT
 
 The tool's output provides both the miRNAs prediction:
 
 > Predicted = all predicted sequences
+
 > AlignmentBlast = Match between predicted and dataset  e-value 0.00001
+
 > Curated = sequences predicted and compared with data plant miRNA families in the Blastn tool
+
 > CuratedIdendical = Separate the repeated sequences 
+
 > CuratedNonIdentical = Separate the repeated sequences 
 
 >To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
