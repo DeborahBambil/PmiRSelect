@@ -20,7 +20,7 @@ If your operating system is different from Ubuntu, install the infernal tool, de
 
 # miRNAs Prediction (START SEARCH)
 
-$ bash run.sh
+$ ./run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
