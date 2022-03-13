@@ -10,7 +10,7 @@ miRBase of pre-miRNAs (hairpin V.22.1), to search for miRNAs by homology in orga
 
 # Install Dependences Ubuntu
 
-$ bash install.sh
+$ ./install.sh
 
 If your operating system is different from Ubuntu, install the infernal tool, depending on your operating system
 
