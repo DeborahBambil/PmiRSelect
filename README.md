@@ -10,7 +10,7 @@ miRBase of pre-miRNAs (hairpin V.22.1), to search for miRNAs by homology in orga
 
 # Install Dependences Ubuntu
 
-$ ./install.sh
+$ bash install.sh
 
 If your operating system is different from Ubuntu, install the infernal tool, depending on your operating system
 
@@ -20,7 +20,7 @@ If your operating system is different from Ubuntu, install the infernal tool, de
 
 # miRNAs Prediction (START SEARCH)
 
-$ ./run.bin
+$ bash run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
