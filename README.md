@@ -16,11 +16,17 @@ If your operating system is different from Ubuntu, install the infernal tool, de
 
 # Insert Organism FOR search of homologs miRNAs
 
-#Insert in "PmiRSelect" directory named "InputSequece.fa" (genome, cDNA, mRNA...) 
+#Insert in "PmiRSelect" directory named "genome.fa" (Genome)
+
+#Insert in "PmiRSelect" directory named "genome.gff" (Genome Annotation)
+
+if you don't have .gff annotation just use genome.fa
 
 # miRNAs Prediction (START SEARCH)
 
 $ bash run.bin
+
+> if you don't have .gff annotation just use genome.fa and USE: $bash runWithoutGFF.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
@@ -28,16 +34,16 @@ $ press "enter" when "Extract regions from a sequence alignment"
 
 The tool's output provides both the miRNAs prediction:
 
-> Predicted = all predicted sequences
+> PredictedCurated = all predicted sequences
 
-> AlignmentBlast = Match between predicted and dataset  e-value 0.00001
+> PredictedCuratedIdendical = Separate the repeated sequences 
 
-> Curated = sequences predicted and compared with data plant miRNA families in the Blastn tool
+> PredictedCuratedNonIdentical = Separate the repeated sequences 
 
-> CuratedIdendical = Separate the repeated sequences 
+> AlignmentBlastHairpin = Match between predicted and Hairpin plants dataset e-value 0.00001
 
-> CuratedNonIdentical = Separate the repeated sequences 
+> AlignmentBlastMature = Match between predicted and Mature plants dataset e-value 0.00001
 
->To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
+> To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
 
->Reference implemented Infernal tool: Nawrocki, E. P. (2014). Annotating functional RNAs in genomes using Infernal. In RNA sequence, structure, and function: computational and bioinformatic methods (pp. 163-197). Humana Press, Totowa, NJ.
+> Reference implemented Infernal tool: Nawrocki, E. P. (2014). Annotating functional RNAs in genomes using Infernal. In RNA sequence, structure, and function: computational and bioinformatic methods (pp. 163-197). Humana Press, Totowa, NJ.
