@@ -26,7 +26,7 @@ if you don't have .gff annotation just use genome.fa
 
 $ bash run.bin
 
-> if you don't have .gff annotation just use genome.fa and USE: $bash runWithoutGFF.bin
+if you don't have .gff annotation just use genome.fa and USE: $bash runWithoutGFF.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
@@ -46,7 +46,7 @@ The tool's output provides both the miRNAs prediction:
 
 > To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
 
-> Reference implemented:
+Reference implemented:
 
 > Infernal tool: Nawrocki, E. P. (2014). Annotating functional RNAs in genomes using Infernal. In RNA sequence, structure, and function: computational and bioinformatic methods (pp. 163-197). Humana Press, Totowa, NJ.
 
