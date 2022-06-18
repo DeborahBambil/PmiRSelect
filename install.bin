@@ -5,4 +5,4 @@ sudo apt-get install -y infernal
 sudo apt-get install -y emboss
 sudo apt-get install ncbi-blast+
 sudo apt install genometools
-
+sudo apt install bedtools
