@@ -55,3 +55,5 @@ Reference implemented:
 > Genome tool: Gremme, G., Steinbiss, S., and Kurtz, S. (2013). GenomeTools: a comprehensive software library for efficient processing of structured genome annotations. IEEE/ACM transactions on computational biology and bioinformatics, 10(3), 645-656.
 
 > Blastn: Chen, Y., Ye, W., Zhang, Y., and Xu, Y. (2015). High speed BLASTN: an accelerated MegaBLAST search tool. Nucleic acids research, 43(16), 7762-7768.
+
+>Bedtools: Quinlan, Aaron R., and Ira M. Hall. "The BEDTools manual." Genome.
