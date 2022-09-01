@@ -1,6 +1,6 @@
  ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/Fig1.png?raw=true)
 
-# PmiRSelect (Plant MiRNAs Selection)
+# PmiR-Select (Plant MiRNAs Selection)
 Authors: Deborah Bambil, Lúcio Flávio de Alencar Figueiredo, Mirele Carolina Souza Ferreira da Costa
 
 This tool was built from a non-redundant dataset of miRNAs collected in the miRBase of pre-miRNAs (hairpin V.22.1), to search for miRNAs by homology in organism genomes.
