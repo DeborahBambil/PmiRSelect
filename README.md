@@ -17,15 +17,9 @@ If your operating system is different from Ubuntu, install the infernal tool, de
 
 #Insert in "PmiRSelect" directory named "genome.fa" (Genome)
 
-#Insert in "PmiRSelect" directory named "genome.gff" (Genome Annotation)
-
-if you don't have .gff annotation just use genome.fa
-
 # miRNAs Prediction (START SEARCH)
 
 $ bash run.bin
-
-if you don't have .gff annotation just use genome.fa and USE: $bash runWithoutGFF.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
@@ -33,7 +27,7 @@ $ press "enter" when "Extract regions from a sequence alignment"
 
 The tool's output provides both the miRNAs prediction:
 
-> PredictedCurated = all predicted sequences
+> PredictedCurated = all predicted sequences and all miRNAs sequences file NT count
 
 > PredictedCuratedIdendical = Separate the repeated sequences 
 
