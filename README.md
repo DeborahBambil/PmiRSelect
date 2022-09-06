@@ -27,7 +27,7 @@ $ press "enter" when "Extract regions from a sequence alignment"
 
 The tool's output provides both the miRNAs prediction:
 
-> PredictedCurated = all predicted sequences and all miRNAs sequences file NT count
+> PredictedCurated = all predicted sequences and all miRNAs sequences only file NT count
 
 > PredictedCuratedIdendical = Separate the repeated sequences 
 
