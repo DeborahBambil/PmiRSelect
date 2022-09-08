@@ -23,6 +23,8 @@ $ bash run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
+Other CM datasets with thresholds of 70, 75, 85, 90, 95 and 100% are available, if you want to experiment, just change the directory "CMBUILDCMCALIBRAT" for the directory of another threshold dataset in "OtherThresholdDatasets > CMxxThreshold > "CMBUILDCMCALIBRAT".
+
 # OUTPUT
 
 The tool's output provides both the miRNAs prediction:
@@ -38,6 +40,10 @@ The tool's output provides both the miRNAs prediction:
 > AlignmentBlastMature = Match between predicted and Mature plants dataset e-value 0.00001
 
 > To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
+
+
+
+OtherThresholdDatasets
 
 Reference implemented:
 
