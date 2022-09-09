@@ -3,7 +3,7 @@
 # PmiR-Select (Plant MiRNAs Selection)
 Authors: Deborah Bambil, Lúcio Flávio de Alencar Figueiredo, Mirele Carolina Souza Ferreira da Costa
 
-This tool was built from a non-redundant dataset of miRNAs collected in the miRBase of pre-miRNAs (hairpin V.22.1), to search for miRNAs by homology in organism genomes.
+This tool was built from update criteria for pre-miRNAs of plants and non-redundant dataset of pre-miRNAs collected in the miRBase of pre-miRNAs (hairpin V.22.1), to search for pre-miRNAs by homology in organism genomes.
 
 # Unzip the directory with the tool: PmiRSelect.rar
 
@@ -23,6 +23,7 @@ $ bash run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
+pmiR-Select main dataset was cured with update criteria for pre-miRNAs of plants, and with 80% redance filter threshold.
 Other CM datasets with thresholds of 70, 75, 85, 90, 95 and 100% are available, if you want to experiment, just change the directory "CMBUILDCMCALIBRAT" for the directory of another threshold dataset in "CMxxThreshold" > "CMBUILDCMCALIBRAT".
 
 # OUTPUT
