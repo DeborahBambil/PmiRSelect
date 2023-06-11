@@ -23,9 +23,6 @@ $ bash run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
-pmiR-Select main dataset was cured with update criteria for pre-miRNAs of plants, and with 80% redance filter threshold.
-Other CM datasets with thresholds of 70, 75, 85, 90, 95 and 100% are available, if you want to experiment, just change the directory "CMBUILDCMCALIBRAT" for the directory of another threshold dataset in "CMxxThreshold" > "CMBUILDCMCALIBRAT".
-
 # OUTPUT
 
 The tool's output provides both the miRNAs prediction:
