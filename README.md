@@ -23,23 +23,6 @@ $ bash run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
-# OUTPUT
-
-The tool's output provides both the miRNAs prediction:
-
-> PredictedCurated = all predicted sequences and all miRNAs sequences only file NT count
-
-> PredictedCuratedIdendical = Separate the repeated sequences 
-
-> PredictedCuratedNonIdentical = Separate the repeated sequences 
-
-> AlignmentBlastHairpin = Match between predicted and Hairpin plants dataset e-value 0.00001
-
-> AlignmentBlastMature = Match between predicted and Mature plants dataset e-value 0.00001
-
-> To repeat the experiment, use these empty folders, but never empty the cmbuild_calibrate directory, because there is the dataset
-
-
 
 OtherThresholdDatasets
 
