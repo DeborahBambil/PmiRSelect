@@ -17,7 +17,7 @@ If your operating system is different from Ubuntu, install the infernal tool, de
 
 #Insert in "PmiRSelect" directory named "genome.fa" (Genome)
 
-# miRNAs Prediction (START SEARCH)
+# miRNAs Identification (START SEARCH)
 
 $ bash run.bin
 
@@ -36,4 +36,3 @@ Reference implemented:
 
 > Blastn: Chen, Y., Ye, W., Zhang, Y., and Xu, Y. (2015). High speed BLASTN: an accelerated MegaBLAST search tool. Nucleic acids research, 43(16), 7762-7768.
 
->Bedtools: Quinlan, Aaron R., and Ira M. Hall. "The BEDTools manual." Genome.
