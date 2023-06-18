@@ -23,9 +23,6 @@ $ bash run.bin
 
 $ press "enter" when "Extract regions from a sequence alignment"
 
-
-OtherThresholdDatasets
-
 Reference implemented:
 
 > Infernal tool: Nawrocki, E. P. (2014). Annotating functional RNAs in genomes using Infernal. In RNA sequence, structure, and function: computational and bioinformatic methods (pp. 163-197). Humana Press, Totowa, NJ.
