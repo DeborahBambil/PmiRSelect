@@ -2872,8 +2872,6 @@ done
 rm -f *.gff
 
 
-find PredictedCurated -size  0 -print -delete
-find AlignmentBlastMature -size  0 -print -delete
 find PredictedNonIdentical -size  0 -print -delete
 find PredictedIdentical -size  0 -print -delete
 find Redundant70 -size  0 -print -delete
@@ -3031,7 +3029,6 @@ done
 
 find PredictedCurated -size  0 -print -delete
 find AlignmentBlastMature -size  0 -print -delete
-find AlignmentBlastHairpin -size  0 -print -delete
 find CMSEARCH -size  0 -print -delete
 find CuratedNonIdentical -size  0 -print -delete
 find CuratedIdentical -size  0 -print -delete
