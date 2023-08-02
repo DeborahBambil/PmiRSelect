@@ -2888,80 +2888,80 @@ find NonRedundant95 -size  0 -print -delete
 find Redundant95 -size  0 -print -delete
 
 cd PredictedHairpin 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd Redundant70  
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd NonRedundant70 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd Redundant75
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd NonRedundant75 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd Redundant80
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd NonRedundant80 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 
 cd Redundant85
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd NonRedundant85 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd Redundant90
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd NonRedundant90 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd Redundant95
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
 
 cd NonRedundant95 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
 cd ..
@@ -3054,91 +3054,91 @@ rm -f *.gff
 
 
 cd PredictedCurated 
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonIdentical
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedIdentical
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonRedundant70
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedRedundant70
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonRedundant75
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedRedundant75
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonRedundant80
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedRedundant80
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonRedundant85
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedRedundant85
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonRedundant90
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedRedundant90
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedNonRedundant95
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
 
 cd CuratedRedundant95
-cat * > allMiRNAs.fa
+cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
