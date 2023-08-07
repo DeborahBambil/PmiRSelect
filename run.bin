@@ -2793,15 +2793,15 @@ done
 
 #BLASTNMATUREALINGMENT
 for file in BlastCompare/*; do
-    filename=$(basename "$file" .fasta)
-    blastn -query "$file" -db data/PlantMature -out "AlignmentBlastMature/$filename" -evalue 0.01 -wordsize 15
+    filename=$(basename "$file")
+    blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -word_size 15
 done
 
 
 #BLASTNMATURETAB
 for file in BlastCompare/*; do
-    filename=$(basename "$file" .fasta)
-    blastn -query "$file" -db data/PlantMature -out "ID/$filename" -evalue 0.01 -outfmt "6 qseqid" -wordsize 15
+    filename=$(basename "$file")
+     blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -outfmt "6 qseqid" -word_size 15
 done
 
 #FIND 
