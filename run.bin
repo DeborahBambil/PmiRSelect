@@ -2871,7 +2871,6 @@ done
 #Delete gff
 rm -f *.gff
 
-
 find PredictedNonIdentical -size  0 -print -delete
 find PredictedIdentical -size  0 -print -delete
 find Redundant70 -size  0 -print -delete
@@ -2888,6 +2887,18 @@ find NonRedundant95 -size  0 -print -delete
 find Redundant95 -size  0 -print -delete
 
 cd PredictedHairpin 
+cat $(ls -v) > allMiRNAs.fa
+awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
+for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
+cd ..
+
+cd PredictedNonIdentical
+cat $(ls -v) > allMiRNAs.fa
+awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
+for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
+cd ..
+
+cd PredictedIdentical
 cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
