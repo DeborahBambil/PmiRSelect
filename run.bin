@@ -2775,17 +2775,24 @@ cp -r PredictedHairpin/* BlastCompare/
 #tr 'AUCG' 'TAGC' 
 #tr 'aucg' 'tagc' 
 
-#Loop to iterate over the files in the 'BlastCompare' directory
-for file in BlastCompare/*; do
-    awk '/^>/ {print; next} {gsub("A", "T"); gsub("U", "A"); gsub("C", "G"); gsub("G", "C"); print}' "$file" > temp_file
-    mv temp_file "$file"
+#!/bin/bash
+
+input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arquivos
+
+for file in "$input_dir"/*; do
+    if [ -f "$file" ]; then
+        sed -i -e 'y/UAGC/ATCG/' "$file"
+    fi
 done
 
-##
+#!/bin/bash
 
-for file in BlastCompare/*; do
-    awk '/^>/ {print; next} {gsub("a", "t"); gsub("u", "a"); gsub("c", "g"); gsub("g", "c"); print}' "$file" > temp_file
-    mv temp_file "$file"
+input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arquivos
+
+for file in "$input_dir"/*; do
+    if [ -f "$file" ]; then
+        sed -i -e 'y/uagc/atcg/' "$file"
+    fi
 done
 
 #RUN SED COMMANDS WITHOUT REMOVING THE HEADER
@@ -2794,7 +2801,7 @@ done
 #BLASTNMATUREALINGMENT
 for file in BlastCompare/*; do
     filename=$(basename "$file")
-    blastn -query "$file" -db "data/families/$filename" -out "AlignmentBlastMature/$filename" -evalue 0.01 -word_size 15
+    blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -word_size 15
 done
 
 
@@ -2871,6 +2878,7 @@ done
 #Delete gff
 rm -f *.gff
 
+
 find PredictedNonIdentical -size  0 -print -delete
 find PredictedIdentical -size  0 -print -delete
 find Redundant70 -size  0 -print -delete
@@ -2887,18 +2895,6 @@ find NonRedundant95 -size  0 -print -delete
 find Redundant95 -size  0 -print -delete
 
 cd PredictedHairpin 
-cat $(ls -v) > allMiRNAs.fa
-awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
-for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
-cd ..
-
-cd PredictedNonIdentical
-cat $(ls -v) > allMiRNAs.fa
-awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
-for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
-cd ..
-
-cd PredictedIdentical
 cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_NT
@@ -3153,6 +3149,5 @@ cat $(ls -v) > allMiRNAs.fa
 awk '/^>/ {printf("\n%s\n",$0);next; } { printf("%s",$0);}  END {printf("\n");}' < allMiRNAs.fa > allMiRNAsLine.fa
 for file in allMiRNAsLine.fa; do awk -v OFS="\t" '/^>/ {getline seq}; {gsub(/>/,"",$0); print FILENAME, $0, length(seq)}' $file; done > allMiRNAs_N
 cd ..
-
 
 
