@@ -2781,7 +2781,7 @@ input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arq
 
 for file in "$input_dir"/*; do
     if [ -f "$file" ]; then
-        sed -i -e 'y/UAGC/ATCG/' "$file"
+        sed -i -e '/^>/!y/UAGC/ATCG/' "$file"
     fi
 done
 
@@ -2791,7 +2791,7 @@ input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arq
 
 for file in "$input_dir"/*; do
     if [ -f "$file" ]; then
-        sed -i -e 'y/uagc/atcg/' "$file"
+        sed -i -e '/^>/!y/uagc/atcg/' "$file"
     fi
 done
 
