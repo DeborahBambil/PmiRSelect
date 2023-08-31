@@ -2799,10 +2799,10 @@ done
 #sed -i '/^[^>]/ s/-//g' BlastCompare/*
 
 #BLASTNMATUREALINGMENT
-for file in BlastCompare/*; do
-    filename=$(basename "$file")
-    blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -word_size 15
-done
+#for file in BlastCompare/*; do
+#    filename=$(basename "$file")
+#    blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -word_size 15
+#done
 
 
 #BLASTNMATURETAB
