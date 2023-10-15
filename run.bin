@@ -2772,8 +2772,8 @@ mkdir BlastCompare
 cp -r PredictedHairpin/* BlastCompare/
 
 #TranscriptionRNADNA
-#tr 'AUCG' 'TAGC' 
-#tr 'aucg' 'tagc' 
+#tr 'U' 'T' 
+#tr 'u' 't' 
 
 #!/bin/bash
 
@@ -2781,7 +2781,7 @@ input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arq
 
 for file in "$input_dir"/*; do
     if [ -f "$file" ]; then
-        sed -i -e '/^>/!y/UAGC/ATCG/' "$file"
+        sed -i -e '/^>/!y/U/T/' "$file"
     fi
 done
 
@@ -2791,7 +2791,7 @@ input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arq
 
 for file in "$input_dir"/*; do
     if [ -f "$file" ]; then
-        sed -i -e '/^>/!y/uagc/atcg/' "$file"
+        sed -i -e '/^>/!y/u/t/' "$file"
     fi
 done
 
