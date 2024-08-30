@@ -1,27 +1,27 @@
  ![name-of-you-image](https://github.com/DeborahBambil/figs/blob/main/Fig1.png?raw=true)
 
 # PmiR-Select (Plant MiRNAs Selection)
-Authors: Deborah Bambil, Lúcio Flávio de Alencar Figueiredo, Mirele Carolina Souza Ferreira da Costa
 
-This tool was built from update criteria for pre-miRNAs of plants and non-redundant dataset of pre-miRNAs collected in the miRBase of pre-miRNAs (hairpin V.22.1), to search for pre-miRNAs by homology in organism genomes.
+**Authors:** Deborah Bambil, Lúcio Flávio de Alencar Figueiredo, Mirele Carolina Souza Ferreira da Costa
 
-# Unzip the directory with the tool: PmiRSelect.rar
+This tool was built to update criteria for pre-miRNAs of plants and a non-redundant dataset of pre-miRNAs collected from the miRBase (hairpin V.22.1). It is designed to search for pre-miRNAs by homology in organism genomes.
 
-# Install Dependences Ubuntu
+## Installation
 
-$ bash install.bin
+1. **Unzip the directory with the tool:**
+   - `PmiRSelect.rar- `
+3. **Insert Organism FOR search of homologs miRNAs:**
 
-If your operating system is different from Ubuntu, install the infernal tool, depending on your operating system
+- `Insert in "PmiRSelect" directory named "genome.fa" (Genome)`
 
-# Insert Organism FOR search of homologs miRNAs
+2. **Install Dependencies on Ubuntu:**
+   ```bash
+   $ bash install.bin
 
-#Insert in "PmiRSelect" directory named "genome.fa" (Genome)
+ 2. **miRNAs Identification (Start Search):**
+   ```bash
+   $ bash run.bin
 
-# miRNAs Identification (START SEARCH)
-
-$ bash run.bin
-
-$ press "enter" when "Extract regions from a sequence alignment"
 
 Reference implemented:
 
