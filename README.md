@@ -12,7 +12,7 @@ This tool was built to update criteria for pre-miRNAs of plants and a non-redund
    - `PmiRSelect.rar`
 3. **Insert Organism FOR search of homologs miRNAs:**
 
-- `Insert in "PmiRSelect" directory named "genome.fa" (Genome)`
+- `Insert in "PmiRSelect" directory named "genome" (Genome)`
 
 2. **Install Dependencies on Ubuntu:**
    ```bash
