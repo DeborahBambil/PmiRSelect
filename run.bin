@@ -2,7 +2,6 @@
 unrar x CM100Threshold.rar
 unrar x data.rar
 mkdir CMSEARCH
-mkdir AlignmentBlastMature
 mkdir PredictedHairpin
 
 #SEARCH
