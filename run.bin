@@ -4,22 +4,6 @@ unrar x data.rar
 mkdir CMSEARCH
 mkdir AlignmentBlastMature
 mkdir PredictedHairpin
-mkdir PredictedCurated
-mkdir PredictedIdentical
-mkdir PredictedNonIdentical
-mkdir Redundant70
-mkdir NonRedundant70
-mkdir NonRedundant75
-mkdir Redundant75
-mkdir NonRedundant80
-mkdir Redundant80
-mkdir NonRedundant85
-mkdir Redundant85
-mkdir NonRedundant90
-mkdir Redundant90
-mkdir NonRedundant95
-mkdir Redundant95
-mkdir ID
 
 #SEARCH
 #cmsearch --cpu 10 -A CMSEARCH/MIR156 CM100Threshold/MIR156.cm genome.fa
@@ -51,52 +35,20 @@ for file in PredictedHairpin/*; do
     mv arquivo_filtrado.fasta "$file"
 done
 
-#BLASTCOMPARE
-mkdir BlastCompare
-cp -r PredictedHairpin/* BlastCompare/
-
-#TranscriptionRNADNA
-#tr 'U' 'T' 
-#tr 'u' 't' 
-
-#!/bin/bash
-
-input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arquivos
-
-for file in "$input_dir"/*; do
-    if [ -f "$file" ]; then
-        sed -i -e '/^>/!y/U/T/' "$file"
-    fi
-done
-
-#!/bin/bash
-
-input_dir="BlastCompare"  # Substitua pelo caminho do diretório contendo os arquivos
-
-for file in "$input_dir"/*; do
-    if [ -f "$file" ]; then
-        sed -i -e '/^>/!y/u/t/' "$file"
-    fi
-done
-
-#RUN SED COMMANDS WITHOUT REMOVING THE HEADER
-#sed -i '/^[^>]/ s/-//g' BlastCompare/*
-
-#BLASTNMATUREALINGMENT
-#for file in BlastCompare/*; do
-#    filename=$(basename "$file")
-#    blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -word_size 15
-#done
-
+find PredictedHairpin -size  0 -print -delete
 
 #BLASTNMATURETAB
-for file in BlastCompare/*; do
+mkdir ID
+for file in PredictedHairpin/*; do
     filename=$(basename "$file")
-     blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -outfmt "6 qseqid" -word_size 15
+    blastn -query "$file" -db "data/families/$filename" -out "ID/$filename" -evalue 0.01 -outfmt "6 qseqid" -word_size 15 &
 done
-
-#FIND 
+wait
 find ID -size  0 -print -delete
+
+for arquivo in ID/*; do
+  sort "$arquivo" | uniq > "$arquivo.tmp" && mv "$arquivo.tmp" "$arquivo"
+done
 
 #ID COM FA ">"
 #Loop to iterate over the files in the "ID" directory.
@@ -104,75 +56,64 @@ for file in ID/*; do
     sed -i 's/^/>/' "$file"
 done
 
+#CompleteSequenceCurated
+mkdir -p PredictedCurated
 
-#Loop to iterate over the files in the "PredictedHairpin" directory.
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    grep -x -F -A 1000 -f "ID/$filename" "$file" > "PredictedCurated/$filename"
+for idfile in ID/*; do
+    fname=$(basename "$idfile")                # nome do arquivo
+    hairpin_file="PredictedHairpin/$fname"     # fasta de entrada
+    curated_file="PredictedCurated/$fname"     # saída
+    
+    # Converte cabeçalhos em um "set"
+    awk 'NR==FNR { if ($1 ~ /^>/) ids[$1]; next }
+         /^>/ { keep = ($1 in ids) }
+         keep' "$idfile" "$hairpin_file" > "$curated_file"
 done
 
-#FIND 
-find PredictedCurated -size  0 -print -delete
-find AlignmentBlastMature -size  0 -print -delete
-find CMSEARCH -size  0 -print -delete
+#Non-Redundant PredictedHairpin
 
-#RedundanceIdenticalNonIdentical
+mkdir NonIdentical
+mkdir Identical
+mkdir Redundant70
+mkdir NonRedundant70
+mkdir NonRedundant75
+mkdir Redundant75
+mkdir NonRedundant80
+mkdir Redundant80
+mkdir NonRedundant85
+mkdir Redundant85
+mkdir NonRedundant90
+mkdir Redundant90
+mkdir NonRedundant95
+mkdir Redundant95
+
+# run skipredundant
+executar_skipredundant() {
+  local file=$1
+  local threshold=$2
+  local outseq_dir=$3
+  local redundantoutseq_dir=$4
+
+  filename=$(basename "$file")
+  skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold "$threshold" -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "$outseq_dir/$filename" -redundantoutseq "$redundantoutseq_dir/$filename"
+}
+
+#  comandos
+thresholds=(100 70 75 80 85 90 95)
+outseq_dirs=("NonIdentical" "NonRedundant70" "NonRedundant75" "NonRedundant80" "NonRedundant85" "NonRedundant90" "NonRedundant95")
+redundantoutseq_dirs=("Identical" "Redundant70" "Redundant75" "Redundant80" "Redundant85" "Redundant90" "Redundant95")
+
+# parallelo
 for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 100 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "PredictedNonIdentical/$filename" -redundantoutseq "PredictedIdentical/$filename" &
+  for ((i=0; i<${#thresholds[@]}; i++)); do
+    executar_skipredundant "$file" "${thresholds[$i]}" "${outseq_dirs[$i]}" "${redundantoutseq_dirs[$i]}" &
+  done
+  wait
 done
-wait
 
-#REDUNDANCE70
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile  matrixf] -mode 1 -threshold 70 -minthreshold 30 -maxthreshold 90 -gapopen  10 -gapextend 5 -outseq "NonRedundant70/$filename" -redundantoutseq "Redundant70/$filename" &
-done
-wait
-
-#REDUNDANCE75
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile  matrixf] -mode 1 -threshold 75 -minthreshold 30 -maxthreshold 90 -gapopen  10 -gapextend 5 -outseq "NonRedundant75/$filename" -redundantoutseq "Redundant75/$filename" &
-done
-wait
-
-#REDUNDANCE80
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile  matrixf] -mode 1 -threshold 80 -minthreshold 30 -maxthreshold 90 -gapopen  10 -gapextend 5 -outseq "NonRedundant80/$filename" -redundantoutseq "Redundant80/$filename" &
-done
-wait
-
-#REDUNDANCE85
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile  matrixf] -mode 1 -threshold 85 -minthreshold 30 -maxthreshold 90 -gapopen  10 -gapextend 5 -outseq "NonRedundant85/$filename" -redundantoutseq "Redundant85/$filename" &
-done
-wait
-
-#REDUNDANCE90
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile  matrixf] -mode 1 -threshold 90 -minthreshold 30 -maxthreshold 90 -gapopen  10 -gapextend 5 -outseq "NonRedundant90/$filename" -redundantoutseq "Redundant90/$filename" &
-done
-wait
-
-#REDUNDANCE95
-for file in PredictedHairpin/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile  matrixf] -mode 1 -threshold 95 -minthreshold 30 -maxthreshold 90 -gapopen  10 -gapextend 5 -outseq "NonRedundant95/$filename" -redundantoutseq "Redundant95/$filename" &
-done
-wait
-
-
-
-#Delete gff
-rm -f *.gff
-
-
-find PredictedNonIdentical -size  0 -print -delete
-find PredictedIdentical -size  0 -print -delete
+find PredictedHairpin -size  0 -print -delete
+find NonIdentical -size  0 -print -delete
+find Identical -size  0 -print -delete
 find Redundant70 -size  0 -print -delete
 find NonRedundant70 -size  0 -print -delete
 find NonRedundant75 -size  0 -print -delete
@@ -186,7 +127,92 @@ find Redundant90 -size  0 -print -delete
 find NonRedundant95 -size  0 -print -delete
 find Redundant95 -size  0 -print -delete
 
-#PredictedCurated
+#Delete gff
+rm -f *.gff
+
+DIR_COMPLETO="PredictedHairpin"
+
+DIRETORIOS_INCOMPLETOS=(
+    "NonIdentical" "Identical" "Redundant70" "NonRedundant70"
+    "NonRedundant75" "Redundant75" "NonRedundant80" "Redundant80"
+    "NonRedundant85" "Redundant85" "NonRedundant90" "Redundant90"
+    "NonRedundant95" "Redundant95"
+)
+
+# Cria um arquivo temporário para armazenar os mapeamentos de cabeçalho
+temp_file=$(mktemp)
+
+echo "Criando mapa de cabeçalhos completos..."
+
+# Percorre todos os arquivos no diretório completo e armazena o mapeamento
+find "$DIR_COMPLETO" -name "*" -type f | while read -r arquivo; do
+    # O 'awk' encontra o padrão ">" e extrai o cabeçalho incompleto e o completo
+    awk '/^>/ {
+        # Extrai a parte numérica (ex: 60049-60255) do cabeçalho
+        # Usa o split para pegar a última parte se houver um ":"
+        split($0, a, ":")
+        incompleto = a[length(a)]
+        
+        # Remove o ">"
+        sub(/^>/, "", incompleto)
+        
+        # Limpa espaços em branco e outros caracteres
+        gsub(/[\r\t ]/, "", incompleto)
+        
+        # Mapeia a parte incompleta para o cabeçalho completo
+        print incompleto, $0
+    }' "$arquivo" >> "$temp_file"
+done
+
+# Percorre cada diretório incompleto
+for dir_incompleto in "${DIRETORIOS_INCOMPLETOS[@]}"; do
+    if [ ! -d "$dir_incompleto" ]; then
+        echo "Aviso: Diretório $dir_incompleto não encontrado. Pulando..."
+        continue
+    fi
+    
+    echo "Processando diretório: $dir_incompleto"
+
+    # Itera sobre cada arquivo incompleto
+    find "$dir_incompleto" -name "*" -type f | while read -r arquivo; do
+        # Usa 'awk' para fazer a substituição em cada arquivo
+        awk '
+            # Carrega o mapa de cabeçalhos
+            BEGIN {
+                while(getline < "'"$temp_file"'") {
+                    map[$1] = $2
+                }
+            }
+            
+            # Se a linha começa com ">", processa
+            /^>/ {
+                # Extrai a parte numérica
+                cabecalho_incompleto = $0
+                sub(/^>/, "", cabecalho_incompleto)
+                gsub(/[\r\t ]/, "", cabecalho_incompleto)
+
+                # Se houver uma correspondência no mapa, substitui
+                if (cabecalho_incompleto in map) {
+                    print map[cabecalho_incompleto]
+                    next
+                }
+            }
+            # Se não for um cabeçalho, imprime a linha como está
+            { print }
+        ' "$arquivo" > "$arquivo.tmp" && mv "$arquivo.tmp" "$arquivo"
+        
+        echo "  - Arquivo atualizado: $arquivo"
+    done
+done
+
+# Remove o arquivo temporário
+rm "$temp_file"
+
+echo "Processo concluído."
+
+
+#Non-Redundant PredictedCurated
+
 mkdir CuratedNonIdentical
 mkdir CuratedIdentical
 mkdir CuratedNonRedundant70
@@ -202,59 +228,31 @@ mkdir CuratedRedundant90
 mkdir CuratedNonRedundant95
 mkdir CuratedRedundant95
 
+# run skipredundant
+executar_skipredundant() {
+  local file=$1
+  local threshold=$2
+  local outseq_dir=$3
+  local redundantoutseq_dir=$4
+
+  filename=$(basename "$file")
+  skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold "$threshold" -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "$outseq_dir/$filename" -redundantoutseq "$redundantoutseq_dir/$filename"
+}
+
+# comandos
+thresholds=(100 70 75 80 85 90 95)
+outseq_dirs=("CuratedNonIdentical" "CuratedNonRedundant70" "CuratedNonRedundant75" "CuratedNonRedundant80" "CuratedNonRedundant85" "CuratedNonRedundant90" "CuratedNonRedundant95")
+redundantoutseq_dirs=("CuratedIdentical" "CuratedRedundant70" "CuratedRedundant75" "CuratedRedundant80" "CuratedRedundant85" "CuratedRedundant90" "CuratedRedundant95")
+
+# parallelo
+for file in PredictedCurated/*; do
+  for ((i=0; i<${#thresholds[@]}; i++)); do
+    executar_skipredundant "$file" "${thresholds[$i]}" "${outseq_dirs[$i]}" "${redundantoutseq_dirs[$i]}" &
+  done
+  wait
+done
+
 find PredictedCurated -size  0 -print -delete
-
-#CompareMatureRedundanceIdenticalNonIdentical
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 100 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonIdentical/$filename" -redundantoutseq "CuratedIdentical/$filename" &
-done
-wait
-
-#CompareMatureREDUNDANCE70
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 70 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonRedundant70/$filename" -redundantoutseq "CuratedRedundant70/$filename" &
-done
-wait
-
-#CompareMatureREDUNDANCE75
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 75 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonRedundant75/$filename" -redundantoutseq "CuratedRedundant75/$filename" &
-done
-wait
-
-#CompareMatureREDUNDANCE80
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 80 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonRedundant80/$filename" -redundantoutseq "CuratedRedundant80/$filename" &
-done
-wait
-
-#CompareMatureREDUNDANCE85
-
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 85 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonRedundant85/$filename" -redundantoutseq "CuratedRedundant85/$filename" &
-done
-wait
-
-#CompareMatureREDUNDANCE90
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 90 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonRedundant90/$filename" -redundantoutseq "CuratedRedundant90/$filename" &
-done
-wait
-
-#CompareMatureREDUNDANCE95
-for file in PredictedCurated/*; do
-    filename=$(basename "$file")
-    skipredundant -feature toggle -sequences "$file" [-datafile matrixf] -mode 1 -threshold 95 -minthreshold 30 -maxthreshold 90 -gapopen 10 -gapextend 5 -outseq "CuratedNonRedundant95/$filename" -redundantoutseq "CuratedRedundant95/$filename" &
-done
-wait
-
-
 find CuratedNonIdentical -size  0 -print -delete
 find CuratedIdentical -size  0 -print -delete
 find CuratedRedundant70 -size  0 -print -delete
@@ -274,5 +272,82 @@ find CuratedRedundant95 -size  0 -print -delete
 #Delete gff
 rm -f *.gff
 
-#Deletediretorios
-#rm -r CMSEARCH
+DIR_COMPLETO="PredictedCurated"
+
+DIRETORIOS_INCOMPLETOS=(
+    "CuratedNonIdentical" "CuratedIdentical" "CuratedRedundant70" "CuratedNonRedundant70"
+    "CuratedNonRedundant75" "CuratedRedundant75" "CuratedNonRedundant80" "CuratedRedundant80"
+    "CuratedNonRedundant85" "CuratedRedundant85" "CuratedNonRedundant90" "CuratedRedundant90"
+    "CuratedNonRedundant95" "CuratedRedundant95"
+)
+
+# Cria um arquivo temporário para armazenar os mapeamentos de cabeçalho
+temp_file=$(mktemp)
+
+echo "Criando mapa de cabeçalhos completos..."
+
+# Percorre todos os arquivos no diretório completo e armazena o mapeamento
+find "$DIR_COMPLETO" -name "*" -type f | while read -r arquivo; do
+    # O 'awk' encontra o padrão ">" e extrai o cabeçalho incompleto e o completo
+    awk '/^>/ {
+        # Extrai a parte numérica (ex: 60049-60255) do cabeçalho
+        # Usa o split para pegar a última parte se houver um ":"
+        split($0, a, ":")
+        incompleto = a[length(a)]
+        
+        # Remove o ">"
+        sub(/^>/, "", incompleto)
+        
+        # Limpa espaços em branco e outros caracteres
+        gsub(/[\r\t ]/, "", incompleto)
+        
+        # Mapeia a parte incompleta para o cabeçalho completo
+        print incompleto, $0
+    }' "$arquivo" >> "$temp_file"
+done
+
+# Percorre cada diretório incompleto
+for dir_incompleto in "${DIRETORIOS_INCOMPLETOS[@]}"; do
+    if [ ! -d "$dir_incompleto" ]; then
+        echo "Aviso: Diretório $dir_incompleto não encontrado. Pulando..."
+        continue
+    fi
+    
+    echo "Processando diretório: $dir_incompleto"
+
+    # Itera sobre cada arquivo incompleto
+    find "$dir_incompleto" -name "*" -type f | while read -r arquivo; do
+        # Usa 'awk' para fazer a substituição em cada arquivo
+        awk '
+            # Carrega o mapa de cabeçalhos
+            BEGIN {
+                while(getline < "'"$temp_file"'") {
+                    map[$1] = $2
+                }
+            }
+            
+            # Se a linha começa com ">", processa
+            /^>/ {
+                # Extrai a parte numérica
+                cabecalho_incompleto = $0
+                sub(/^>/, "", cabecalho_incompleto)
+                gsub(/[\r\t ]/, "", cabecalho_incompleto)
+
+                # Se houver uma correspondência no mapa, substitui
+                if (cabecalho_incompleto in map) {
+                    print map[cabecalho_incompleto]
+                    next
+                }
+            }
+            # Se não for um cabeçalho, imprime a linha como está
+            { print }
+        ' "$arquivo" > "$arquivo.tmp" && mv "$arquivo.tmp" "$arquivo"
+        
+        echo "  - Arquivo atualizado: $arquivo"
+    done
+done
+
+# Remove o arquivo temporário
+rm "$temp_file"
+
+echo "Processo concluído."
